@@ -1,12 +1,55 @@
 <html>
-  <head>
-    <link rel="stylesheet" href="/index.css" />
-  </head>
-  <body>
+
+<head>
+    <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+    <!--THIS IS HEADER. COMMENTS NOT DISPLAYED IN BROWSER-->
+
+    <header>
+        <div class="navigation-bar">
+            <div class="logo">
+                <img alt="logo" src="images/burger.svg">
+            </div>
+            <nav class="navbar">
+                <li class="nav-info"><a class="nav-link" href="/"> Home</a></li>
+                <li class="nav-meals"><a class="nav-link" href="meals"> Meals </a></li>
+                <li class="nav-reservation"><a class="nav-link" href="reservations"> Reservations</a></li>
+                <li class="nav-review"><a class="nav-link" href="reviews"> Reviews </a></li>
+            </nav>
+        </div>
+    </header>
+    <!--THIS IS CONTAINER FOR ONLINE FORM. COMMENTS NOT DISPLAYED IN BROWSER-->
+    <section class="firststep">
+        <div class="intro">
+            <div class="heading_1">
+                <h1>foodieee</h1>
+            </div>
+            <div class="header">
+                <p> You can find your favourite meals here!</p>
+            </div>
+            <section>
+                <div class="search-container">
+                    <input type="text" placeholder="Search for your favourite meals" />
+                    <button>Fetch Posts</button>
+                    <div id="result"></div>
+                </div>
+            </section>
+        </div>
+    </section>
+    </header>
+    <footer>
+        <div class="container">
+            <p>Copyright &copy; Pallabi Ghosh Das</p>
+        </div>
+    </footer>
+    </div>
     <script src="//unpkg.com/navigo@6"></script>
     <script src="/pages/home.js"></script>
     <script src="/pages/meal.js"></script>
     <script src="/pages/meals.js"></script>
     <script src="/main.js"></script>
-  </body>
+</body>
+
 </html>
