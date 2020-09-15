@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://github.com/Pallabi-ghosh/Meal-Sharing-App/Meal-Sharing-Template/master/Group.png" alt="Project logo"></a>
+ <img width=200px height=200px src="https://raw.githubusercontent.com/Pallabi-ghosh/Meal-Sharing-App/Group.png" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Meal sharing</h3>
