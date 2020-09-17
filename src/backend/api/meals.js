@@ -11,8 +11,10 @@ router.get("/", async(request, response) => {
     try {
         const { maxPrice, availableReservations, title, createdAfter, limit, } = request.query;
         const onlyMeals = await knex("meal").select("*");
+        console.log(onlyMeals);
         // Get meals that has a price smaller than maxPrice
         if (maxPrice) {
+
             try {
                 const mealsLessThanMaxPrice = await knex("meal")
                     .where("price", "<", maxPrice)
@@ -24,6 +26,7 @@ router.get("/", async(request, response) => {
             }
             // Get meals that still has available reservations
         } else if (availableReservations === "true") {
+
             try {
                 const mealsFromDb = await knex("meal").select("*")
                     .sum({ max_reservations: "reservation.number_of_guests" })
@@ -38,10 +41,11 @@ router.get("/", async(request, response) => {
                 throw error;
             }
             // Get meals that partially match a title. Rød grød med will match the meal with the title Rød grød med fløde
-        } else if ('%oscar%') {
+        } else if (title) {
+
             try {
                 const mealsMatchingTitlte = await knex("meal")
-                    .where("title", "like", `%oscar%`)
+                    .where("title", "like", "%" + title + "%")
                     .then((data) => {
                         response.json(data);
                     });
@@ -50,6 +54,7 @@ router.get("/", async(request, response) => {
             }
             // Get meals that has been created after the date
         } else if (createdAfter) {
+
             try {
                 const CreatedAfter = await knex("meal")
                     .where("created_date", ">", createdAfter)
@@ -61,6 +66,7 @@ router.get("/", async(request, response) => {
             }
             // Only specific number of meals
         } else if (limit) {
+
             try {
                 const mealsData = await knex("meal")
                     .where("limit", ">", limit)
@@ -71,6 +77,7 @@ router.get("/", async(request, response) => {
                 throw error;
             }
         } else if (Object.keys(request.query).length === 0) {
+
             response.json(onlyMeals);
         }
     } catch (error) {

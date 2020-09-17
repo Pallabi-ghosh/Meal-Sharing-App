@@ -1,5 +1,13 @@
 "use strict"
 
+
+
+
+
+
+
+
+
 const loc;
 const button = document.querySelector('button');
 const subInput = document.querySelector('input');
@@ -40,10 +48,6 @@ async function onload() {
         })
 };
 
-
-
-
-
 button.addEventListener('click', () => {
     onload(subInput.value);
 });
@@ -72,10 +76,10 @@ window.handleHomeRequest = () => {
                 const li = document.createElement("li");
                 const ul = document.createElement("ul");
                 li.innerHTML = `<a href="meals/${element.id}" >${Object.values(
-					element.title
-				)
-					.join("")
-					.toUpperCase()} : ${Object.values(element.price).join("")} kr.</a>`;
+    				element.title
+    			)
+    				.join("")
+    				.toUpperCase()} : ${Object.values(element.price).join("")} kr.</a>`;
                 ul.appendChild(li);
                 section.appendChild(ul);
             });
