@@ -6,6 +6,7 @@ const knex = require("../database");
 
 
 // api/meals/	GET	Returns all meals	GET api/meals/
+console.log("meals hit");
 
 router.get("/", async(request, response) => {
     try {
@@ -118,6 +119,7 @@ const createMeal = async({ body }) => {
 // api/meals/{id}	GET	Returns meal by id	GET api/meals/2
 
 router.get("/:id", async(request, response) => {
+    console.log("11")
     getMeal({
             id: request.params.id,
         })

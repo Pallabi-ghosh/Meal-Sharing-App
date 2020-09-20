@@ -64,6 +64,7 @@ window.handleMealsRequest = () => {
 
 </div>            
   </section>
+  
     </header>
     </body>
 `;
@@ -73,7 +74,7 @@ window.handleMealsRequest = () => {
                     return `<li>
                               <img class="logo" src="https://source.unsplash.com/user/erondu/600x300?${meal.title}" alt="picture of meal title">
                               <h3>${meal.title}</h3><br>
-                              <h4><i class="fa fa-map-marker" style="font-size:24px;"></i>  ${meal.location}</h4>
+                              <h4><i class="fa fa-map-marker" style="font-size:24px;"></i>  ${meal.id}</h4>
                               <a href='meal/${meal.id}'><strong>See details<strong></a><br><br>
                           </li>`
                 }).join('')
@@ -86,7 +87,7 @@ window.handleMealsRequest = () => {
                             return `<li>
                                       <img class="logo" src="https://source.unsplash.com/user/erondu/600x300?${meal.title}" alt="picture of meal title">
                                       <h3>${meal.title}</h3><br>
-                                      <h4><i class="fa fa-map-marker" style="font-size:24px;"></i>  ${meal.location}</h4>
+                                      <h4><i class="fa fa-map-marker" style="font-size:24px;"></i>  ${meal.id}</h4>
                                       <a href='meal/${meal.id}'><strong>See details<strong></a><br><br>
                                   </li>`
                         }
@@ -95,4 +96,5 @@ window.handleMealsRequest = () => {
             })
     }
     renderMeals()
+
 }
