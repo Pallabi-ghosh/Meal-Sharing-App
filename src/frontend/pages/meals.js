@@ -1,82 +1,114 @@
+const createMeal = () => {
+    document.querySelector('.error').textContent = ''
+
+    const title = document.getElementById('title').value
+    const description = document.getElementById('description').value
+    const location = document.getElementById('location').value
+    const when = document.getElementById('when').value
+    const max_reservations = document.getElementById('max_reservations').value
+    const price = document.getElementById('price').value
+    const created_date = document.getElementById('created_date').value
+
+    if (title == '' || description == '' || location == '' || when == '' || max_reservations == '' || price == '' || created_date == '') {
+        document.querySelector('.error').textContent = 'Please enter all fields'
+    } else {
+        fetch(`/api/meals`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                method: 'POST',
+                body: JSON.stringify({
+                    'title': title,
+                    'description': description,
+                    'location': location,
+                    'when': when,
+                    'max_reservations': max_reservations,
+                    'price': price,
+                    'created_date': created_date
+                })
+            })
+            .then(response => {
+                console.log(response);
+                if (response.status == '200') {
+                    alert('Meal created successfully')
+                } else {
+                    console.log('Error creating meal');
+                }
+            })
+    }
+}
+
+
+
 window.handleMealsRequest = () => {
     function renderMeals() {
         fetch("/api/meals")
             .then(response => response.json())
             .then(meals => {
                 document.head.innerHTML = `
-                      <link rel="stylesheet" href="meals.css" />
-                      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                      <title>Meals</title>
-                      `;
+                    <link rel="stylesheet" href="meals.css" />
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                    <title>Meals</title>
+                    `;
 
                 document.body.innerHTML = `
-                <body>
-                      <header>
-                      <div class="navigation-bar">
-        <div class="logo">
-            <img alt="logo" src="images/burger.svg">
-        </div>
-        <nav class="navbar">
-<li class="nav-info"><a class="nav-link" href="/"> Home</a></li>
-<li class="nav-meals"><a class="nav-link" href="meals"> Meals </a></li>
-<li class="nav-reservation"><a class="nav-link" href="reservations"> Reservations</a></li>
-<li class="nav-review"><a class="nav-link" href="reviews"> Reviews </a></li>
-</nav>
-</div>
-<div id="container">
-
-<span class="input">
-  <input type="text" class="input__field" id="input-1" />
-  <label for="input-1" class="input__label">
-    <span class="input__label-content">First Name</span>
-</label>
-</span>
-
-<span class="input">
-  <input type="text" class="input__field" id="input-2" />
-  <label for="input-2" class="input__label">
-    <span class="input__label-content">Last Name</span>
-  </label>
-</span>
-
-<span class="input">
-  <input type="text" class="input__field" id="input-3" />
-  <label for="input-3" class="input__label">
-    <span class="input__label-content">Phone Number</span>
-  </label>
-</span>
-
-<span class="input">
-  <input type="text" class="input__field" id="input-4" />
-  <label for="input-4" class="input__label">
-    <span class="input__label-content">Email Address</span>
-  </label>
-</span>
-
-<span class="input message">
-  <textarea class="input__field" id="input-5"></textarea>
-  <label for="input-5" class="input__label">
-    <span class="input__label-content">Message</span>
-  </label>
-</span>
-
-<button id="send-button" type="button">Send</button>
-
-</div>            
-  </section>
-  
-    </header>
-    </body>
+              <body>
+ <header>
+    <div class="navigation-bar">
+       <div class="logo">
+          <img alt="logo" src="images/burger.svg">
+       </div>
+       <nav class="navbar">
+          <li class="nav-info"><a class="nav-link" href="/"> Home</a></li>
+          <li class="nav-meals"><a class="nav-link" href="meals"> Meals </a></li>
+          <li class="nav-reservation"><a class="nav-link" href="reservations"> Reservations</a></li>
+          <li class="nav-review"><a class="nav-link" href="reviews"> Reviews </a></li>
+       </nav>
+    </div>
+    <div class="meals">
+                  <h1>Featured meals</h1>
+                  <div class="search-container">
+                <input type="text" class="search" placeholder="Search">
+                    <button id="submit">search meals</button>
+                    <form class="add-meals-form"></form>
+                </div>
+                    <ul></ul>                                                     
+                  </div><br><br>
+    <section>
+    <div class="totalbox border">
+    <h2>Create Your Own Meal</h2>
+       <form method="POST" class="loginForm">
+          <label for="title">Title:</label><br>
+          <input type="text" id="title" name="title" value=""><br>
+          <label for="description">Description:</label><br>
+          <input type="text" id="description" name="description" value=""><br><br>
+          <label for="location">Location:</label><br>
+          <input type="text" id="location" name="location" value=""><br><br>
+          <label for="when">When:</label><br>
+          <input type="text" placeholder="yyyy-mm-dd" id="when" name="when" value=""><br><br>
+          <label for="max_reservations">Maximum reservations:</label><br>
+          <input type="text" id="max_reservations" name="max_reservations" value=""><br><br>
+          <label for="price">Price:</label><br>
+          <input type="text" id="price" name="price" value=""><br><br>
+          <label for="created_date">Created date:</label><br>
+          <input type="text" placeholder="yyyy-mm-dd" id="created_date" name="created_date" value=""><br><br>
+       </form>
+       <div class='error'></div>
+       <button class="loginbtn" onclick="createMeal()">Create meal</button>                                     
+    </div>
+    </section>
+ </header>
+</body>
 `;
 
                 let mealsDiv = document.querySelector('.meals ul')
                 mealsDiv.innerHTML = meals.map(meal => {
                     return `<li>
-                              <img class="logo" src="https://source.unsplash.com/user/erondu/600x300?${meal.title}" alt="picture of meal title">
-                              <h3>${meal.title}</h3><br>
-                              <h4><i class="fa fa-map-marker" style="font-size:24px;"></i>  ${meal.id}</h4>
-                              <a href='meal/${meal.id}'><strong>See details<strong></a><br><br>
-                          </li>`
+                            <img class="logo" src="https://source.unsplash.com/user/erondu/600x300?${meal.title}" alt="picture of meal title">
+                            <h3>${meal.title}</h3><br>
+                            <h4><i class="fa fa-eur" style="font-size:24px;"></i>  ${meal.price}</h4>
+                            <a href='meal/${meal.price}'><strong>book now<strong></a><br><br>
+                        </li>`
                 }).join('')
 
                 const search = document.querySelector('.search');
@@ -85,11 +117,11 @@ window.handleMealsRequest = () => {
                     mealsDiv.innerHTML = meals.map(meal => {
                         if (meal.title.toUpperCase().includes(searchedValue.toUpperCase())) {
                             return `<li>
-                                      <img class="logo" src="https://source.unsplash.com/user/erondu/600x300?${meal.title}" alt="picture of meal title">
-                                      <h3>${meal.title}</h3><br>
-                                      <h4><i class="fa fa-map-marker" style="font-size:24px;"></i>  ${meal.id}</h4>
-                                      <a href='meal/${meal.id}'><strong>See details<strong></a><br><br>
-                                  </li>`
+                                    <img class="logo" src="https://source.unsplash.com/user/erondu/600x300?${meal.title}" alt="picture of meal title">
+                                    <h3>${meal.title}</h3><br>
+                                    <h4><i class="fa fa-eur" style="font-size:24px;"></i>  ${meal.price}</h4>
+                                    <a href='meal/${meal.price}'><strong>book now<strong></a><br><br>
+                                </li>`
                         }
                     }).join('')
                 })

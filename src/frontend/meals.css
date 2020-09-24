@@ -9,8 +9,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     margin: 0px;
     padding: 0px;
-    background: url(images/home.jpg) center center no-repeat;
-    background-color: #e5e5e5;
+    background-color: white;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -73,144 +72,126 @@ li a {
 }
 
 
-/* form action */
+/* THIS PART IS ABOUT HEADER */
 
-#container {
-    position: absolute;
-    width: 710px;
-    height: 5em;
-    left: 50%;
-    top: 50%;
-    margin-left: -355px;
-    margin-top: -2.5em;
+.meals ul {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    align-content: center;
+    flex-wrap: wrap;
 }
 
-.input {
-    position: relative;
+.meals ul li {
+    width: 250px;
+    height: 380px;
+    list-style-type: none;
+    border: 1px solid rgb(206, 203, 203);
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
     margin: 1em;
-    width: calc(50% - 2em);
-    height: 80px;
+    text-align: center;
 }
 
-.message {
-    width: calc(100% - 2em);
+.meals h1 {
+    text-align: center;
+}
+
+.meals ul li h4 {
+    margin-top: 0;
+}
+
+.meals ul li h3 {
+    margin-bottom: 0;
+}
+
+.meals ul li img {
+    width: 200px;
     height: 200px;
 }
 
-textarea {
-    border: none;
-    resize: none;
-}
-
-.input__field {
-    position: absolute;
-    margin: 0.8em 0;
-    padding: 0.4em;
-    width: 100%;
-    height: calc(100% - 1.6em);
-    border: none;
-    border-radius: 0;
-    background: transparent;
-    color: #ffcc00;
-    font-size: 1.55em;
-    font-weight: bold;
-    -webkit-appearance: none;
-    /* for box shadows to show on iOS */
-}
-
-.input__field:focus {
-    outline: none;
-}
-
-.input__label {
-    position: absolute;
-    padding: 0 1em;
-    margin: 1.2em 0;
-    width: 100%;
-    height: calc(100% - 2.4em);
+.meals ul li a {
     color: rgb(73, 196, 233);
-    font-weight: bold;
-    font-size: 70.25%;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    text-decoration: none;
+    border-radius: 30px;
+    padding: 10px;
+    box-shadow: 0px 3px 15px rgba(34, 34, 34, 0.8);
 }
 
-.input__label-content {
-    position: relative;
-    display: block;
-    padding: 1.5em 0;
-    width: 100%;
-    -webkit-transition: -webkit-transform 0.3s;
-    transition: transform 0.3s;
+.search-container {
+    padding: 30px;
+    text-align: center;
 }
 
-.input__label::before,
-.input__label:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: #6a7989;
-    -webkit-transition: -webkit-transform 0.3s;
-    transition: transform 0.3s;
+input[type="text"] {
+    width: 300px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
 }
 
-.input__label::before {
-    top: 0;
-}
-
-.input__label::after {
-    bottom: 0;
-}
-
-.input__field:focus+.input__label .input__label-content,
-.input--filled .input__label-content {
-    -webkit-transform: translate3d(0, -90%, 0);
-    transform: translate3d(0, -90%, 0);
-}
-
-.input__field:focus+.input__label::before,
-.input--filled .input__label::before {
-    -webkit-transform: translate3d(0, -0.5em, 0);
-    transform: translate3d(0, -0.5em, 0);
-}
-
-.input__field:focus+.input__label::after,
-.input--filled .input__label::after {
-    -webkit-transform: translate3d(0, 0.5em, 0);
-    transform: translate3d(0, 0.5em, 0);
-}
-
-#send-button {
-    width: 200px;
-    height: 60px;
-    background-color: #6a7989;
-    color: #000;
-    border: 0;
-    font-weight: bold;
-    font-size: 70.25%;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    -webkit-transition: -webkit-transform 0.3s;
-    transition: transform 0.3s;
-}
-
-#send-button:hover,
-#send-button:focus {
-    outline: 0;
+.meals button {
     background-color: rgb(73, 196, 233);
-    color: #000;
-    -webkit-transition: -webkit-transform 0.3s;
-    transition: transform 0.3s;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+/* form action */
+
+.totalbox {
+    width: 50%;
+    height: auto;
+    margin: auto;
+    padding: 30px 30px;
+    background: #fff;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+input {
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    padding: 10px;
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+}
+
+button {
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.loginbtn {
+    background: rgb(73, 196, 233);
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #fff;
+}
+
+.loginbtn:hover,
+.loginbtn:focus {
+    background: rgb(73, 196, 233);
+}
+
+.boxcheckbox label {
+    font-size: 12px;
+    font-weight: 300;
+}
+
+@media only screen and (max-width: 600px) {
+    .totalbox {
+        width: 90%;
+    }
 }
