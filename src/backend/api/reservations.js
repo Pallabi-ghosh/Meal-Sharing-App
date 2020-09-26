@@ -112,6 +112,7 @@ const updateReservation = async({ body, id }) => {
 // api/reservations/{id}	DELETE	Deletes the reservation by id	DELETE api/reservations/2
 
 router.delete("/:id", async(request, response) => {
+
     deleteReservation({
             deleteId: request.params.id,
         })
